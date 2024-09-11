@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iframe Query Parameter Receiver</title>
+</head>
+<body>
+  <h1>Data from URL Query Parameters</h1>
+  <p id="messageDisplay">Waiting for data...</p>
+
+  <script>
+    // Function to extract query parameters
+    function getQueryParams() {
+      // Parse the query string in the URL
+      const params = new URLSearchParams(window.location.search);
+
+      // Extract data
+      const data = {
+        user: params.get('user'),   // Extract 'user' from ?user=value
+        points: params.get('points') // Extract 'points' from ?points=value
+      };
+
+      console.log("Extracted data from URL:", data);
+      return data;
+    }
+
+    // Get the data from URL and display it
+    const receivedData = getQueryParams();
+    document.getElementById('messageDisplay').innerText = `User: ${receivedData.user}, Points: ${receivedData.points}`;
+  </script>
+</body>
+</html>
